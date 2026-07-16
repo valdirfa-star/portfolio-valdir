@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Valdir Francisco Alves — Executive Career Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#EEF0F2;
+    --bg-alt:#E3E7EB;
+    --panel:#0F1720;
+    --panel-line:rgba(255,255,255,0.09);
+    --ink:#161B22;
+    --ink-soft:#4B5563;
+    --ink-faint:#8891A0;
+    --accent:#2F6690;
+    --accent-strong:#1F4D6E;
+    --gold:#B08A3F;
+    --paper:#FFFFFF;
+    --line:#D3D7DC;
+    --radius:2px;
+    --maxw:1080px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    -webkit-font-smoothing:antialiased;
+    line-height:1.6;
+  }
+  h1,h2,h3,h4{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .mono{
+    font-family:'IBM Plex Mono',monospace;
+  }
+  a{color:inherit;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+
+  /* NAV */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(238,240,242,0.92);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:var(--maxw);margin:0 auto;padding:16px 32px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;
+  }
+  .nav-name{
+    font-family:'Fraunces',serif;font-weight:600;font-size:16px;
+    display:flex;align-items:baseline;gap:8px;
+  }
+  .nav-name .dot{color:var(--gold);}
+  nav.links{display:flex;gap:22px;flex-wrap:wrap;}
+  nav.links a{
+    font-size:12.5px;text-transform:uppercase;letter-spacing:0.08em;
+    color:var(--ink-soft);text-decoration:none;font-weight:600;
+    padding-bottom:2px;border-bottom:1px solid transparent;
+  }
+  nav.links a:hover{color:var(--accent-strong);border-color:var(--gold);}
+
+  /* HERO */
+  .hero{padding:96px 0 72px;position:relative;}
+  .hero .eyebrow{
+    font-family:'IBM Plex Mono',monospace;font-size:12.5px;letter-spacing:0.14em;
+    text-transform:uppercase;color:var(--accent-strong);margin-bottom:22px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .hero .eyebrow::before{content:"";width:28px;height:1px;background:var(--gold);display:inline-block;}
+  .hero h1{font-size:clamp(38px,5.4vw,58px);line-height:1.05;max-width:820px;}
+  .hero .role{
+    margin-top:22px;font-size:17px;color:var(--ink-soft);
+    display:flex;flex-wrap:wrap;gap:0;
+  }
+  .hero .role span{margin-right:10px;padding-right:10px;border-right:1px solid var(--line);}
+  .hero .role span:last-child{border-right:none;}
+  .hero .tagline{
+    margin-top:28px;font-family:'Fraunces',serif;font-style:italic;font-weight:400;
+    font-size:20px;color:var(--accent-strong);max-width:640px;
+  }
+
+  /* SECTION generic */
+  section{padding:64px 0;border-top:1px solid var(--line);}
+  .section-head{display:flex;align-items:baseline;gap:16px;margin-bottom:36px;}
+  .section-num{font-family:'IBM Plex Mono',monospace;color:var(--gold);font-size:13px;}
+  .section-head h2{font-size:28px;}
+  .lede{max-width:700px;font-size:16.5px;color:var(--ink-soft);}
+
+  /* SUMMARY / ABOUT */
+  .prose{max-width:760px;font-size:16.5px;color:#2A313C;}
+  .prose p{margin:0 0 16px;}
+  .philosophy{
+    background:var(--paper);border-left:3px solid var(--gold);
+    padding:26px 30px;max-width:700px;margin-top:8px;
+  }
+  .philosophy p{
+    font-family:'Fraunces',serif;font-size:20px;font-style:italic;color:var(--ink);margin:0;
+  }
+
+  /* DASHBOARD */
+  .dashboard-section{background:var(--panel);color:#EDEFF2;border-top:none;}
+  .dashboard-section .section-head h2{color:#fff;}
+  .dashboard-section .section-num{color:var(--gold);}
+  .dashboard-section .lede{color:#AEB6C2;}
+  .kpi-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:1px;
+    background:var(--panel-line);border:1px solid var(--panel-line);margin-top:8px;
+  }
+  .kpi-card{background:#141D28;padding:26px 22px;}
+  .kpi-card .num{font-family:'IBM Plex Mono',monospace;font-size:30px;font-weight:600;color:#fff;}
+  .kpi-card .num .accent{color:var(--gold);}
+  .kpi-card .label{margin-top:8px;font-size:12px;text-transform:uppercase;letter-spacing:0.07em;color:#8894A3;}
+  .highlight-list{
+    margin-top:36px;display:grid;grid-template-columns:1fr 1fr;gap:14px 40px;
+  }
+  .highlight-list div{
+    display:flex;gap:12px;font-size:14.5px;color:#C6CCD5;padding:10px 0;border-bottom:1px solid var(--panel-line);
+  }
+  .highlight-list div::before{content:"→";color:var(--gold);font-family:'IBM Plex Mono',monospace;}
+  .tools-strip{margin-top:34px;display:flex;flex-wrap:wrap;gap:10px;}
+  .tools-strip span{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;color:#DCE1E7;
+    border:1px solid var(--panel-line);padding:6px 12px;letter-spacing:0.02em;
+  }
+
+  /* EXPERTISE CARDS */
+  .expertise-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--line);margin-top:8px;}
+  .expertise-card{background:var(--paper);padding:28px 26px;}
+  .expertise-card h3{font-size:18px;margin-bottom:10px;color:var(--accent-strong);}
+  .expertise-card p{font-size:14.5px;color:var(--ink-soft);margin:0 0 16px;}
+  .expertise-card ul{margin:0;padding-left:0;list-style:none;}
+  .expertise-card li{
+    font-size:13px;color:#3B4350;padding:5px 0 5px 16px;position:relative;
+  }
+  .expertise-card li::before{content:"";position:absolute;left:0;top:12px;width:6px;height:1px;background:var(--gold);}
+
+  /* BI / KPI tags */
+  .kpi-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;}
+  .kpi-tags span{
+    font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--accent-strong);
+    background:var(--bg-alt);border:1px solid var(--line);padding:7px 13px;
+  }
+
+  /* CASES */
+  .case{
+    display:grid;grid-template-columns:64px 1fr;gap:20px;padding:26px 0;border-bottom:1px solid var(--line);
+  }
+  .case:last-child{border-bottom:none;}
+  .case .cnum{font-family:'IBM Plex Mono',monospace;color:var(--gold);font-size:22px;}
+  .case h3{font-size:18px;margin-bottom:8px;}
+  .case p{font-size:14.5px;color:var(--ink-soft);margin:0 0 12px;max-width:640px;}
+  .case .tags{display:flex;flex-wrap:wrap;gap:8px;}
+  .case .tags span{
+    font-size:11.5px;text-transform:uppercase;letter-spacing:0.05em;color:var(--accent-strong);
+    border:1px solid var(--line);padding:4px 9px;
+  }
+
+  /* EDUCATION */
+  .edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:8px;}
+  .edu-card h4{font-size:13px;text-transform:uppercase;letter-spacing:0.08em;color:var(--gold);margin-bottom:12px;}
+  .edu-card ul{margin:0;padding-left:18px;color:#2A313C;font-size:14.5px;}
+  .edu-card li{margin-bottom:6px;}
+  .dev-note{margin-top:34px;max-width:760px;font-size:15px;color:var(--ink-soft);}
+  .pill-row{margin-top:16px;display:flex;flex-wrap:wrap;gap:9px;}
+  .pill-row span{
+    font-size:12.5px;background:var(--paper);border:1px solid var(--line);padding:6px 12px;color:#2A313C;
+  }
+
+  /* SKILLS */
+  .skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin-top:8px;}
+  .skills-col h4{font-size:12.5px;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent-strong);margin-bottom:14px;}
+  .skills-col ul{margin:0;padding:0;list-style:none;}
+  .skills-col li{font-size:14px;color:#2A313C;padding:6px 0;border-bottom:1px solid var(--line);}
+
+  .behavior-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:8px;}
+  .behavior-card{padding:22px;background:var(--paper);border-top:2px solid var(--gold);}
+  .behavior-card h4{font-size:15.5px;margin-bottom:8px;font-family:'Fraunces',serif;}
+  .behavior-card p{font-size:13.5px;color:var(--ink-soft);margin:0;}
+
+  /* VALUES / MISSION */
+  .mission-block{
+    background:var(--panel);color:#EDEFF2;padding:52px 48px;border:none;
+  }
+  .mission-block .section-num, .mission-block h2{color:#fff;}
+  .mission-block p.lede2{font-family:'Fraunces',serif;font-size:19px;font-style:italic;color:#D8DCE3;max-width:700px;margin-top:10px;}
+  .values-list{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px;}
+  .values-list span{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;color:#0F1720;
+    background:var(--gold);padding:7px 13px;
+  }
+
+  /* CONTACT */
+  .contact-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:start;}
+  .contact-list{margin-top:8px;}
+  .contact-list div{
+    display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--line);font-size:15px;
+  }
+  .contact-list div span:first-child{color:var(--ink-faint);text-transform:uppercase;font-size:11.5px;letter-spacing:0.08em;font-family:'IBM Plex Mono',monospace;padding-top:2px;}
+  .contact-list div span:last-child a{color:var(--accent-strong);text-decoration:none;border-bottom:1px solid var(--line);}
+  .contact-list div span:last-child a:hover{border-color:var(--gold);}
+  .social-row{margin-top:26px;display:flex;gap:12px;flex-wrap:wrap;}
+  .social-badge{
+    display:flex;align-items:center;gap:9px;
+    border:1px solid var(--line);background:var(--paper);
+    padding:9px 15px 9px 11px;text-decoration:none;color:var(--ink);
+    font-size:13px;font-weight:600;transition:border-color .15s;
+  }
+  .social-badge:hover{border-color:var(--gold);}
+  .social-badge svg{width:17px;height:17px;flex-shrink:0;}
+  .social-badge .handle{color:var(--ink-soft);font-weight:400;font-size:12px;}
+  .closing{
+    font-family:'Fraunces',serif;font-style:italic;font-size:19px;line-height:1.5;color:var(--ink);
+    border-left:3px solid var(--gold);padding-left:24px;
+  }
+  .closing .who{margin-top:16px;font-family:'Inter',sans-serif;font-style:normal;font-size:13px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:0.06em;}
+
+  footer{padding:36px 0 56px;text-align:center;color:var(--ink-faint);font-size:12.5px;}
+
+  @media (max-width:860px){
+    .kpi-grid{grid-template-columns:repeat(2,1fr);}
+    .expertise-grid{grid-template-columns:1fr;}
+    .edu-grid{grid-template-columns:1fr;}
+    .skills-grid{grid-template-columns:1fr 1fr;}
+    .behavior-grid{grid-template-columns:1fr;}
+    .contact-grid{grid-template-columns:1fr;}
+    .highlight-list{grid-template-columns:1fr;}
+    nav.links{display:none;}
+    .mission-block{padding:40px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-inner">
+    <div class="nav-name">Valdir Francisco Alves<span class="dot">·</span><span style="font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:11.5px;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em;">Portfolio</span></div>
+    <nav class="links">
+      <a href="#summary">Resumo</a>
+      <a href="#dashboard">Dashboard</a>
+      <a href="#expertise">Atuação</a>
+      <a href="#cases">Cases</a>
+      <a href="#education">Formação</a>
+      <a href="#skills">Competências</a>
+      <a href="#contact">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Executive Career Portfolio</div>
+    <h1>Valdir Francisco Alves</h1>
+    <div class="role">
+      <span>Supervisor Administrativo</span>
+      <span>Facilities</span>
+      <span>Operações</span>
+      <span>Gestão de Frotas</span>
+    </div>
+    <p class="tagline">"Gestão baseada em dados, processos e melhoria contínua."</p>
+  </div>
+</section>
+
+<section id="summary">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">01</span><h2>Executive Summary</h2></div>
+    <div class="prose">
+      <p>Profissional com mais de 30 anos de experiência corporativa, com atuação em gestão administrativa, facilities, operações, contratos e gestão de frotas. Experiência na administração de frota nacional, gestão por indicadores, acompanhamento de custos, fornecedores e suporte à tomada de decisões por meio de dados.</p>
+    </div>
+
+    <div style="margin-top:44px;">
+      <h3 style="font-size:19px;margin-bottom:14px;">Sobre Mim</h3>
+      <div class="prose">
+        <p>Minha trajetória foi construída pela combinação entre experiência prática, formação multidisciplinar e aprendizado contínuo. Atuo com foco em eficiência operacional, melhoria contínua e governança dos processos.</p>
+      </div>
+    </div>
+
+    <div style="margin-top:44px;">
+      <h3 style="font-size:19px;margin-bottom:14px;">Filosofia de Gestão</h3>
+      <div class="philosophy">
+        <p>Transformar informações em decisões, processos em eficiência e desafios em resultados sustentáveis.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="dashboard" class="dashboard-section">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">02</span><h2>Executive Dashboard</h2></div>
+    <p class="lede">Panorama numérico da atuação: frota, contratos, abrangência e ferramentas de gestão.</p>
+
+    <div class="kpi-grid">
+      <div class="kpi-card"><div class="num"><span class="accent">30+</span></div><div class="label">Anos de experiência</div></div>
+      <div class="kpi-card"><div class="num">131</div><div class="label">Veículos sob gestão</div></div>
+      <div class="kpi-card"><div class="num">02</div><div class="label">Contratos acompanhados</div></div>
+      <div class="kpi-card"><div class="num" style="font-size:22px;">Nacional</div><div class="label">Abrangência da frota</div></div>
+    </div>
+
+    <div class="highlight-list">
+      <div>Redução de custos operacionais, consumo de combustível e sinistros</div>
+      <div>Atuação com indicadores e dashboards gerenciais</div>
+      <div>Gestão por indicadores em toda a operação nacional</div>
+      <div>Suporte à tomada de decisão baseado em dados</div>
+    </div>
+
+    <div class="tools-strip">
+      <span>Power BI</span><span>Excel Avançado</span><span>TOTVS Datasul</span><span>Facilities</span><span>Operações</span><span>Gestão de Frotas</span>
+    </div>
+  </div>
+</section>
+
+<section id="expertise">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">03</span><h2>Áreas de Atuação</h2></div>
+    <p class="lede">Cinco frentes de gestão que sustentam a operação administrativa e de frota em nível nacional.</p>
+
+    <div class="expertise-grid">
+      <div class="expertise-card">
+        <h3>Gestão Administrativa</h3>
+        <p>Controle de processos administrativos, contratos, faturamento, documentação, fornecedores e apoio à tomada de decisão.</p>
+        <ul>
+          <li>Controle de processos e rotinas administrativas</li>
+          <li>Gestão de contratos e faturamento</li>
+          <li>Organização documental e arquivos</li>
+          <li>Relacionamento com fornecedores administrativos</li>
+          <li>Apoio à tomada de decisão das áreas internas</li>
+        </ul>
+      </div>
+      <div class="expertise-card">
+        <h3>Gestão de Facilities</h3>
+        <p>Coordenação de serviços relacionados à mobilidade corporativa, gestão de SLA, fornecedores e atendimento às áreas internas.</p>
+        <ul>
+          <li>Coordenação de serviços de mobilidade corporativa</li>
+          <li>Gestão de SLA com fornecedores</li>
+          <li>Atendimento e suporte às áreas internas</li>
+          <li>Padronização de processos de facilities</li>
+          <li>Controle de custos dos serviços contratados</li>
+        </ul>
+      </div>
+      <div class="expertise-card">
+        <h3>Gestão de Operações</h3>
+        <p>Planejamento e acompanhamento de indicadores operacionais, suporte à liderança e padronização de processos.</p>
+        <ul>
+          <li>Planejamento da operação nacional</li>
+          <li>Acompanhamento de indicadores operacionais</li>
+          <li>Suporte à liderança na tomada de decisões</li>
+          <li>Padronização de processos operacionais</li>
+          <li>Melhoria contínua da operação</li>
+        </ul>
+      </div>
+      <div class="expertise-card">
+        <h3>Gestão de Frotas</h3>
+        <p>Responsável pelo acompanhamento de uma frota nacional de 131 veículos, monitorando combustível, manutenção, telemetria, sinistros, infrações e disponibilidade.</p>
+        <ul>
+          <li>Monitoramento de combustível e consumo</li>
+          <li>Gestão de manutenção preventiva e corretiva</li>
+          <li>Acompanhamento por telemetria</li>
+          <li>Controle de sinistros e infrações</li>
+          <li>Disponibilidade e alocação da frota</li>
+        </ul>
+      </div>
+      <div class="expertise-card" style="grid-column:1 / -1;">
+        <h3>Gestão Contratual</h3>
+        <p>Interface com locadoras e fornecedores, validação de faturamento, controle contratual e apoio ao planejamento da renovação da frota.</p>
+        <ul style="display:grid;grid-template-columns:repeat(5,1fr);">
+          <li>Interface com locadoras e fornecedores</li>
+          <li>Validação de faturamento contratual</li>
+          <li>Controle e acompanhamento de contratos</li>
+          <li>Apoio ao planejamento de renovação da frota</li>
+          <li>Análise de custos contratuais</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="bi">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">04</span><h2>Business Intelligence</h2></div>
+    <div class="prose">
+      <p>Utilização de Power BI e Excel Avançado para consolidação de dados, construção de dashboards e apoio à tomada de decisões.</p>
+    </div>
+    <h4 style="font-size:12.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-faint);margin-top:28px;">Indicadores (KPIs) acompanhados</h4>
+    <div class="kpi-tags">
+      <span>Disponibilidade da frota</span>
+      <span>Consumo de combustível</span>
+      <span>Custos operacionais</span>
+      <span>Sinistros</span>
+      <span>Infrações</span>
+      <span>Manutenção</span>
+      <span>SLA</span>
+      <span>Utilização da frota</span>
+    </div>
+  </div>
+</section>
+
+<section id="cases">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">05</span><h2>Cases</h2></div>
+    <p class="lede">Situações reais de atuação, com as competências mobilizadas em cada uma.</p>
+
+    <div class="case">
+      <div class="cnum">01</div>
+      <div>
+        <h3>Gestão Inteligente da Frota</h3>
+        <p>Monitoramento da frota nacional por telemetria e dashboards, contribuindo para redução de custos, combustível e sinistros.</p>
+        <div class="tags"><span>Análise de Dados</span><span>Melhoria Contínua</span><span>Gestão por Indicadores</span><span>Planejamento</span><span>Tomada de Decisão</span></div>
+      </div>
+    </div>
+    <div class="case">
+      <div class="cnum">02</div>
+      <div>
+        <h3>Gestão de Custos</h3>
+        <p>Consolidação de informações para apoio ao Comitê de Frota e decisões operacionais.</p>
+        <div class="tags"><span>Análise de Dados</span><span>Melhoria Contínua</span><span>Gestão por Indicadores</span><span>Planejamento</span><span>Tomada de Decisão</span></div>
+      </div>
+    </div>
+    <div class="case">
+      <div class="cnum">03</div>
+      <div>
+        <h3>Renovação da Frota</h3>
+        <p>Participação no planejamento de renovação considerando categoria, quantidade de veículos e estimativas de consumo.</p>
+        <div class="tags"><span>Análise de Dados</span><span>Melhoria Contínua</span><span>Gestão por Indicadores</span><span>Planejamento</span><span>Tomada de Decisão</span></div>
+      </div>
+    </div>
+    <div class="case">
+      <div class="cnum">04</div>
+      <div>
+        <h3>Indicadores Operacionais</h3>
+        <p>Estruturação de indicadores para acompanhamento da operação nacional.</p>
+        <div class="tags"><span>Análise de Dados</span><span>Melhoria Contínua</span><span>Gestão por Indicadores</span><span>Planejamento</span><span>Tomada de Decisão</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">06</span><h2>Formação Acadêmica</h2></div>
+    <div class="prose"><p>Ao longo da minha carreira, investi continuamente no desenvolvimento técnico e gerencial, buscando uma formação multidisciplinar que apoiasse a tomada de decisões e a gestão de operações.</p></div>
+
+    <div class="edu-grid">
+      <div class="edu-card">
+        <h4>Graduação</h4>
+        <ul>
+          <li>Bacharel em Administração de Empresas</li>
+          <li>Bacharel em Ciências Contábeis</li>
+          <li>Bacharel em Logística</li>
+        </ul>
+      </div>
+      <div class="edu-card">
+        <h4>Pós-graduação</h4>
+        <ul>
+          <li>Pós-Graduação em Logística e Gestão de Transporte</li>
+          <li>Pós-Graduação em Gestão de Operações</li>
+        </ul>
+      </div>
+      <div class="edu-card">
+        <h4>MBA</h4>
+        <ul>
+          <li>MBA em Logística e Supply Chain Management</li>
+          <li>MBA em Gestão Estratégica de Negócios (em andamento)</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="dev-note">
+      <strong style="color:var(--ink);">Desenvolvimento Profissional.</strong> Acredito no aprendizado contínuo como um dos principais fatores para a evolução profissional. Ao longo da carreira, participei de cursos voltados para:
+    </div>
+    <div class="pill-row">
+      <span>Gestão de Frotas</span><span>Facilities</span><span>Power BI</span><span>Excel Avançado</span>
+      <span>Indicadores de Performance (KPIs)</span><span>Gestão de Processos</span><span>Logística</span>
+      <span>Administração</span><span>Business Intelligence</span>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">07</span><h2>Competências Técnicas</h2></div>
+    <div class="skills-grid">
+      <div class="skills-col">
+        <h4>Gestão</h4>
+        <ul>
+          <li>Gestão Administrativa</li>
+          <li>Gestão de Facilities</li>
+          <li>Gestão de Operações</li>
+          <li>Gestão de Frotas</li>
+          <li>Gestão Contratual</li>
+        </ul>
+      </div>
+      <div class="skills-col">
+        <h4>Indicadores</h4>
+        <ul>
+          <li>KPIs</li>
+          <li>Dashboards Gerenciais</li>
+          <li>Análise de Dados</li>
+          <li>Business Intelligence</li>
+          <li>Relatórios Gerenciais</li>
+        </ul>
+      </div>
+      <div class="skills-col">
+        <h4>Ferramentas</h4>
+        <ul>
+          <li>Microsoft Excel Avançado</li>
+          <li>Microsoft Power BI</li>
+          <li>TOTVS Datasul</li>
+          <li>Pacote Microsoft Office</li>
+          <li>Sistemas de Telemetria</li>
+        </ul>
+      </div>
+      <div class="skills-col">
+        <h4>Operações</h4>
+        <ul>
+          <li>Gestão de Custos</li>
+          <li>Gestão de Combustível</li>
+          <li>Gestão de Manutenção</li>
+          <li>Controle de Sinistros</li>
+          <li>Controle de Infrações</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:52px;">
+      <h3 style="font-size:19px;margin-bottom:18px;">Competências Comportamentais</h3>
+      <div class="prose" style="margin-bottom:22px;"><p>Ao longo da carreira, desenvolvi competências fundamentais para atuação em ambientes corporativos.</p></div>
+      <div class="behavior-grid">
+        <div class="behavior-card"><h4>Liderança</h4><p>Capacidade de coordenar atividades, integrar equipes e apoiar gestores na tomada de decisões.</p></div>
+        <div class="behavior-card"><h4>Organização</h4><p>Planejamento, controle de processos e acompanhamento sistemático de indicadores.</p></div>
+        <div class="behavior-card"><h4>Comunicação</h4><p>Relacionamento com clientes internos, fornecedores e equipes multidisciplinares.</p></div>
+        <div class="behavior-card"><h4>Pensamento Analítico</h4><p>Tomada de decisão baseada em dados e indicadores.</p></div>
+        <div class="behavior-card"><h4>Visão Sistêmica</h4><p>Compreensão dos impactos entre pessoas, processos, custos e resultados.</p></div>
+        <div class="behavior-card"><h4>Melhoria Contínua</h4><p>Busca permanente por eficiência operacional e otimização de recursos.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="mission" style="border-top:none;padding:0 0 64px;">
+  <div class="wrap">
+    <div class="mission-block">
+      <div class="section-head" style="margin-bottom:8px;"><span class="section-num">08</span><h2>Missão Profissional</h2></div>
+      <p class="lede2">Contribuir para o crescimento das organizações por meio da gestão eficiente de processos, utilização de indicadores de desempenho e melhoria contínua, apoiando decisões estratégicas que promovam produtividade, qualidade e sustentabilidade operacional.</p>
+
+      <h3 style="color:#fff;font-size:16px;margin-top:38px;">Valores</h3>
+      <div class="values-list">
+        <span>Ética</span><span>Transparência</span><span>Comprometimento</span><span>Respeito às Pessoas</span>
+        <span>Responsabilidade</span><span>Melhoria Contínua</span><span>Foco em Resultados</span><span>Aprendizado Contínuo</span>
+      </div>
+
+      <h3 style="color:#fff;font-size:16px;margin-top:38px;">Objetivo de Carreira</h3>
+      <p style="color:#C6CCD5;font-size:15px;max-width:700px;margin-top:10px;">Atuar em posições de Supervisão ou Coordenação nas áreas de Administração, Facilities, Operações ou Gestão de Frotas, contribuindo com experiência, visão analítica e gestão orientada por indicadores para o alcance dos objetivos estratégicos da organização.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="section-head"><span class="section-num">09</span><h2>Contato</h2></div>
+    <div class="contact-grid">
+      <div>
+        <div class="contact-list">
+          <div><span>Localização</span><span>São José dos Campos – SP, Brasil</span></div>
+          <div><span>Telefone</span><span><a href="tel:+5512991090334">(12) 99109-0334</a></span></div>
+          <div><span>E-mail</span><span><a href="mailto:valdirfa@hotmail.com">valdirfa@hotmail.com</a></span></div>
+          <div><span>LinkedIn</span><span><a href="https://www.linkedin.com/in/valdir-francisco-alves-0a114082" target="_blank" rel="noopener">linkedin.com/in/valdir-francisco-alves</a></span></div>
+          <div><span>Portfólio Notion</span><span>(Inserir link quando publicado)</span></div>
+        </div>
+
+        <div class="social-row">
+          <a class="social-badge" href="https://www.linkedin.com/in/valdir-francisco-alves-0a114082" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="1" y="1" width="22" height="22" rx="3" stroke="#2F6690" stroke-width="1.6"/><rect x="6" y="10" width="2.4" height="8" fill="#2F6690"/><circle cx="7.2" cy="6.6" r="1.4" fill="#2F6690"/><path d="M11 18v-8h2.3v1.2c.6-.9 1.5-1.4 2.7-1.4 2 0 3.2 1.3 3.2 3.7V18h-2.4v-4.1c0-1.1-.5-1.8-1.5-1.8-.9 0-1.6.6-1.9 1.4v4.5H11z" fill="#2F6690"/></svg>
+            LinkedIn
+          </a>
+          <a class="social-badge" href="https://www.facebook.com/valdirfalves" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="11" stroke="#2F6690" stroke-width="1.6"/><path d="M13.8 8.6h1.6V6.2h-1.9c-2 0-3 1.1-3 3.1v1.6h-1.7v2.4h1.7V18h2.5v-4.7h1.8l.4-2.4h-2.2V9.5c0-.6.3-.9.8-.9z" fill="#2F6690"/></svg>
+            Facebook
+          </a>
+          <a class="social-badge" href="https://www.instagram.com/valdir_francisco_alves_/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5.5" stroke="#2F6690" stroke-width="1.6"/><circle cx="12" cy="12" r="4.3" stroke="#2F6690" stroke-width="1.6"/><circle cx="17.6" cy="6.4" r="1.1" fill="#2F6690"/></svg>
+            Instagram
+          </a>
+        </div>
+      </div>
+      <div class="closing">
+        "Acredito que resultados consistentes são alcançados quando pessoas, processos, tecnologia e indicadores trabalham de forma integrada. Minha trajetória profissional foi construída com esse propósito: transformar informações em decisões, processos em eficiência e desafios em resultados sustentáveis."
+        <div class="who">Valdir Francisco Alves</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>Executive Career Portfolio — Valdir Francisco Alves</footer>
+
+</body>
+</html>
